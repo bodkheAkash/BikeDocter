@@ -39,7 +39,7 @@ public class CustomerController {
 	@GetMapping("/getCustomerdetails")
 	public Customer getByLoginid(@RequestParam("loginid") int loginid)
 	{
-		return custserv.getById(loginid);
+		return custserv.getByLoginid(loginid);
 	}
 	
 	@PostMapping("/registercustomer")

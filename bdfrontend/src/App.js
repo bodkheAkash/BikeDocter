@@ -10,11 +10,20 @@ import ServiceRegistration from './Component/Registration/ServiceCenterRegistrat
 import LoginNewPage from './Component/Login/LoginNewPage';
 import CustomerHome from './Component/HomePage/CustomerHome';
 import ServiceHome from './Component/HomePage/CustomerHome';
+import { useSelector } from 'react-redux';
+import Logout from './Component/Logout/Logout';
+import BookingService from './Component/Registration/BookingService';
+import UserHome from './Component/UseCases/UserHome';
+import ServiceProgress from './Component/UseCases/ServiceProgress';
+import ViewServiceCenter from './Component/UseCases/ViewServiceCenter';
 
 function App() {
+
+  const mystate=useSelector((state)=>state.logged);
+
   return (
-   
       <div> 
+        <div style={{display:mystate.loggedIn?"none":"block "}}>
         <nav className="navbar navbar-expand-lg bg-light" style={{ boxShadow: "0 10px 10px 0 rgba(0,0,0,.4)" }}>
           <div className="container-fluid">
             <a className="navbar-brand" href="/">
@@ -66,6 +75,7 @@ function App() {
             </div>
           </div>
         </nav>
+        </div>
         <div>
          <Routes>
          <Route
@@ -80,7 +90,12 @@ function App() {
                 element={<LoginNewPage/>}></Route>
                 <Route path="userlogin"
                 element={<LoginNewPage/>}></Route>
-              
+              <Route path="customerhome" element={<CustomerHome/>}></Route>
+              <Route path="logout" element={<Logout/>}></Route>
+              <Route path="bookingservice" element={<BookingService/>}></Route>
+              <Route path="userhome" element={<UserHome/>}></Route>
+              <Route path="serviceprogress" element={<ServiceProgress/>}></Route>
+              <Route path="viewServiceCenter" element={<ViewServiceCenter/>}></Route>
          </Routes>
         </div>
       </div>

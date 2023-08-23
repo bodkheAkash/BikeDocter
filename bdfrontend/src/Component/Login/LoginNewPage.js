@@ -1,6 +1,8 @@
 import { useReducer, useState } from "react";
 import { Link, Route, Routes, useNavigate } from "react-router-dom"
 import CustomerHome from "../HomePage/CustomerHome";
+import { useDispatch } from "react-redux";
+import { login } from "../../slice";
 
 export default function LoginNewPage()
 
@@ -26,6 +28,7 @@ export default function LoginNewPage()
     const [info,dispatch]=useReducer(reducer,init)
     const [msg,setMsg] = useState(" ");
     const navigate = useNavigate();
+    const reduxAction=useDispatch();
 
     const sendData = (e) => {
         e.preventDefault();
@@ -45,13 +48,17 @@ export default function LoginNewPage()
                    }
                    else
                    {
+                    localStorage.setItem("loggedUser",JSON.stringify(obj));
+                    console.log(obj)
                       if(obj.status === false)
                       {
                           alert("Request has not been approved");
                       }
                       else
                       {
+                         
                           console.log(JSON.stringify(obj))
+                          reduxAction(login())
                           if(obj.role.id === 1)
                           {
                                alert("in customer");
@@ -100,12 +107,7 @@ export default function LoginNewPage()
                 <p>{JSON.stringify(info)}</p>
                 <p>{msg}</p>
                 </div>
-                <Routes>
-                      {/* ------------------Customer----------------------------- */}
-                <Route path="customerhome" element={<CustomerHome/>}></Route>
-                 {/* ------------------Service----------------------------- */}
-                 
-                </Routes>
+              
                
         </div>
     )
