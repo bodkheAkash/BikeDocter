@@ -39,7 +39,7 @@ export default function LoginNewPage()
             body: JSON.stringify(info)
         }
         fetch("http://localhost:8080/chkLogin",reqOptions)
-        .then(resp =>resp.text())
+        .then(resp => resp.text())
         .then(text => text.length ? JSON.parse(text) : {})
         .then(obj => {
                    if(Object.keys(obj).length === 0)
@@ -64,16 +64,16 @@ export default function LoginNewPage()
                                alert("in customer");
                                navigate("/customerhome"); 
                           }
-                          else if(obj.role.id  === 2)
+                          else if(obj.role.id  === 5)
                           {
                                alert("in service center");
-                              /*  navigate("/trainer_home"); */
+                               navigate("/serviceHome");
 
                           }
-                          else if(obj.role.id === 3)
+                          else if(obj.role.id === 10)
                           {
                                alert("in admin");
-                              /*  navigate("/dietitian_home"); */
+                              //Add admin homepage
 
                           }
                           
@@ -100,7 +100,8 @@ export default function LoginNewPage()
                        onChange={(e)=>{dispatch({type:'update',fld:'pwd',val:e.target.value})}}></input>
                     </div>
                     <div className="button-group">
-                    <button type="submit" className="btn btn-primary px-3" onClick={(e)=>{sendData(e)}}>Login</button>
+                    <button type="button" className="btn btn-primary px-3" onClick={(e)=>{sendData(e)}}>Login</button> 
+                    {/*} <button type="button" className="btn btn-primary px-3">Login</button> */}
                     <button type="reset" className="btn btn-primary px-3"onClick={(e)=>{dispatch({type:'reset'})}}>Reset</button>
                     </div>
                 </form>

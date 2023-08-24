@@ -10,12 +10,8 @@ import ServiceRegistration from './Component/Registration/ServiceCenterRegistrat
 import LoginNewPage from './Component/Login/LoginNewPage';
 import CustomerHome from './Component/HomePage/CustomerHome';
 import ServiceHome from './Component/HomePage/CustomerHome';
+import ServiceCenterRegistration from './Component/Registration/ServiceCenterRegistration';
 import { useSelector } from 'react-redux';
-import Logout from './Component/Logout/Logout';
-import BookingService from './Component/Registration/BookingService';
-import UserHome from './Component/UseCases/UserHome';
-import ServiceProgress from './Component/UseCases/ServiceProgress';
-import ViewServiceCenter from './Component/UseCases/ViewServiceCenter';
 
 function App() {
 
@@ -65,7 +61,7 @@ function App() {
                       </a>
                     </li>
                     <li>
-                      <a className="dropdown-item" href="/servicecenterregistration">
+                      <a className="dropdown-item" href="/serviceregistration">
                         Service Center
                       </a>
                     </li>
@@ -90,12 +86,10 @@ function App() {
                 element={<LoginNewPage/>}></Route>
                 <Route path="userlogin"
                 element={<LoginNewPage/>}></Route>
-              <Route path="customerhome" element={<CustomerHome/>}></Route>
-              <Route path="logout" element={<Logout/>}></Route>
-              <Route path="bookingservice" element={<BookingService/>}></Route>
-              <Route path="userhome" element={<UserHome/>}></Route>
-              <Route path="serviceprogress" element={<ServiceProgress/>}></Route>
-              <Route path="viewServiceCenter" element={<ViewServiceCenter/>}></Route>
+                <Route path="serviceregistration" element={<ServiceCenterRegistration/>}></Route>
+                <Route path="customerhome" element={<CustomerHome />}></Route>
+                <Route path="serviceHome" element={<ServiceHome />}></Route>
+              
          </Routes>
         </div>
       </div>
