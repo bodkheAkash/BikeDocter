@@ -12,6 +12,7 @@ import CustomerHome from './Component/HomePage/CustomerHome';
 import ServiceHome from './Component/HomePage/CustomerHome';
 import ServiceCenterRegistration from './Component/Registration/ServiceCenterRegistration';
 import { useSelector } from 'react-redux';
+import { BookingList } from './Component/UseCases/BookingList';
 
 function App() {
 
@@ -36,7 +37,7 @@ function App() {
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/#">
+                  <a className="nav-link" href="/bookinglist">
                     Contact Us
                   </a>
                 </li>
@@ -89,6 +90,7 @@ function App() {
                 <Route path="serviceregistration" element={<ServiceCenterRegistration/>}></Route>
                 <Route path="customerhome" element={<CustomerHome />}></Route>
                 <Route path="serviceHome" element={<ServiceHome />}></Route>
+                <Route path="bookinglist" element={<BookingList />}></Route>
               
          </Routes>
         </div>

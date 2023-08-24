@@ -21,17 +21,31 @@ export default function ServiceCenterHome() {
   //     .catch((e) => console.log(e));
   // };
 
+  // useEffect(() => {
+  //   var loginid = localStorage.getItem("loginid");
+  //   fetch("http://localhost:8080/getScDetailsByLoginid?loginid=" + loginid)
+  //     .then((resp) => resp.json())
+  //     .then((jsonData) => {
+  //       console.log(jsonData);
+  //       setData(jsonData);
+  //       localStorage.setItem("scid", jsonData.servicecenterid);
+  //     })
+  //     .catch((e) => {
+  //       console.log(e);
+  //     });
+  // }, []);
+
   useEffect(() => {
     var loginid = localStorage.getItem("loginid");
     fetch("http://localhost:8080/getScDetailsByLoginid?loginid=" + loginid)
       .then((resp) => resp.json())
       .then((jsonData) => {
-        console.log(jsonData);
+        console.log("Received JSON data:", jsonData);
         setData(jsonData);
         localStorage.setItem("scid", jsonData.servicecenterid);
       })
       .catch((e) => {
-        console.log(e);
+        console.log("Fetch error:", e);
       });
   }, []);
 
