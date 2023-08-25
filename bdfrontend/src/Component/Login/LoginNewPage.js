@@ -73,7 +73,7 @@ export default function LoginNewPage()
                           else if(obj.role.id === 10)
                           {
                                alert("in admin");
-                              //Add admin homepage
+                               navigate("/admin_Home");
 
                           }
                           

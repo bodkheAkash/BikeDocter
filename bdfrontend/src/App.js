@@ -13,6 +13,14 @@ import ServiceHome from './Component/HomePage/CustomerHome';
 import ServiceCenterRegistration from './Component/Registration/ServiceCenterRegistration';
 import { useSelector } from 'react-redux';
 import { BookingList } from './Component/UseCases/BookingList';
+import AdminHome from './Component/HomePage/AdminHome'
+import Logout from './Component/Logout/Logout';
+import AdminServiceCenterVerification from './Component/UseCases/AdminServiceCenterVerification ';
+import { LoginListWithDelete } from './Component/UseCases/LoginListWithDelete';
+import ViewBookings from './Component/UseCases/ViewBookings';
+import Crousal from './Component/HomePage/Crousal';
+import {pic} from './Component/Images/Img2.jpg'
+import CardGrid from './Component/HomePage/CardGrid';
 
 function App() {
 
@@ -73,7 +81,10 @@ function App() {
           </div>
         </nav>
         </div>
+        <Crousal/>
+        <CardGrid/>
         <div>
+
          <Routes>
          <Route
                 path="customerregistration"
@@ -91,6 +102,11 @@ function App() {
                 <Route path="customerhome" element={<CustomerHome />}></Route>
                 <Route path="serviceHome" element={<ServiceHome />}></Route>
                 <Route path="bookinglist" element={<BookingList />}></Route>
+                <Route path="/admin_Home" element={<AdminHome/>}></Route>
+                <Route path="/Verifycenters" element={<AdminServiceCenterVerification/>}></Route>
+                <Route path="/allLogin" element={<LoginListWithDelete/>}></Route>
+                <Route path="/allbooking" element={<ViewBookings/>}></Route>
+                <Route path="/logout" element={<Logout/>}></Route>
               
          </Routes>
         </div>
