@@ -68,11 +68,46 @@ public class ServiceCenterController {
 		return serviceCenterService.createServiceCenter(serviceCenter);
 	}
 
+//	@PutMapping("/admin/servicecen/{id}")
+//	public ServiceCenter updateServiceCenter(@PathVariable int id, @RequestBody ServiceCenter serviceCenter) {
+//		return serviceCenterService.updateServiceCenter(id, serviceCenter);
+//	}
+//	@PutMapping("/admin/servicecen/{id}")
+//	public ServiceCenter updateServiceCenter(@PathVariable int id, @RequestBody ServiceCenter serviceCenter) {
+//	    // Retrieve the service center from the database using the provided ID
+//	    ServiceCenter existingCenter = serviceCenterService.getServiceCenterById(id);
+//	    if (existingCenter != null) {
+//	        // Update the verification status to "Yes"
+//	        existingCenter.setVerified(true);
+//	        return serviceCenterService.updateServiceCenter(id, existingCenter);
+//	    }
+//	    // Handle case where the service center with the provided ID doesn't exist
+//	    return null;
+//	}
+
 	@PutMapping("/admin/servicecen/{id}")
-	public ServiceCenter updateServiceCenter(@PathVariable int id, @RequestBody ServiceCenter serviceCenter) {
-		return serviceCenterService.updateServiceCenter(id, serviceCenter);
+	public ResponseEntity<ServiceCenter> updateServiceCenterVerification(@PathVariable int id) {
+	    ServiceCenter serviceCenter = serviceCenterService.getServiceCenterById(id);
+	    if (serviceCenter != null) {
+	        serviceCenter.setStatus(1); // Change status to 1 (verified)
+	        serviceCenterService.updateServiceCenter(id, serviceCenter);
+	        return ResponseEntity.ok(serviceCenter);
+	    } else {
+	        return ResponseEntity.notFound().build();
+	    }
 	}
 
+	@PutMapping("/admin/servicecen/reject/{id}")
+    public ResponseEntity<String> rejectServiceCenter(@PathVariable int id) {
+        ServiceCenter serviceCenter = serviceCenterService.getServiceCenterById(id);
+        if (serviceCenter != null) {
+            serviceCenter.setStatus(2); // Update status to "Rejected"
+            serviceCenterService.updateServiceCenter(id, serviceCenter);
+            return ResponseEntity.ok("Service Center rejected successfully.");
+        }
+        return ResponseEntity.notFound().build();
+    }
+	
 	@DeleteMapping("/admin/servicecen/{id}")
 	public void deleteServiceCenter(@PathVariable int id) {
 		serviceCenterService.deleteServiceCenter(id);
