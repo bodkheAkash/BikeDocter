@@ -11,13 +11,8 @@ import LoginNewPage from './Component/Login/LoginNewPage';
 import CustomerHome from './Component/HomePage/CustomerHome';
 import ServiceHome from './Component/HomePage/CustomerHome';
 import { useSelector } from 'react-redux';
-import Logout from './Component/Logout/Logout';
-import BookingService from './Component/Registration/BookingService';
-import UserHome from './Component/UseCases/UserHome';
-import ServiceProgress from './Component/UseCases/ServiceProgress';
-import ViewServiceCenter from './Component/UseCases/ViewServiceCenter';
-import ChangePassword from './Component/UseCases/ChangePassword';
-import Rating from './Component/UseCases/Rating';
+import BookingList, { ViewBookings } from './Component/UseCases/BookingList';
+import ServiceCenterHome from './Component/HomePage/ServiceCenterHome';
 
 function App() {
 
@@ -81,27 +76,17 @@ function App() {
         <div>
          <Routes>
          <Route
-                path="customerregistration"
-                element={<CustomerRegistration/>}
+                path="customerregistration" element={<CustomerRegistration/>}
               ></Route>
               <Route
-                path="servicecenterregistration"
-                element={<ServiceRegistration/>}
+                path="servicecenterregistration" element={<ServiceRegistration/>}
               ></Route>
-              <Route path="login"
-                element={<LoginNewPage/>}></Route>
-                <Route path="userlogin"
-                element={<LoginNewPage/>}></Route>
-              <Route path="customerhome" element={<CustomerHome/>}></Route>
-              <Route path="logout" element={<Logout/>}></Route>
-              <Route path="userhome" element={<UserHome/>}></Route>
-             <Route path="changepassword" element={<ChangePassword/>}></Route>
-             <Route path="viewServiceCenter" element={<ViewServiceCenter/>}></Route>
-            <Route path="bookingservice" element={<BookingService/>}></Route>
-            <Route path="rating" element={<Rating/>}></Route>
-            <Route path="serviceprogress" element={<ServiceProgress/>}></Route>
-             <Route path="servicehome" element={<ServiceHome/>}></Route>
-            
+              <Route path="/login" element={<LoginNewPage/>}></Route>
+                <Route path="/userlogin" element={<LoginNewPage/>}></Route>
+                <Route path="/serviceregistration" element={<ServiceCenterHome/>}></Route>
+                <Route path="/customerhome" element={<CustomerHome />}></Route>
+                <Route path="/serviceHome" element={<ServiceCenterHome/>}></Route>  
+                <Route path="/viewbookings" element={<BookingList/>}></Route>           
          </Routes>
         </div>
       </div>

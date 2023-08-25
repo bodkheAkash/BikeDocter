@@ -64,13 +64,14 @@ export default function LoginNewPage()
                                alert("in customer");
                                navigate("/customerhome"); 
                           }
-                          else if(obj.role.id  === 2)
+                          else if(obj.role.id  === 5)
                           {
                                alert("in service center");
-                              navigate("/servicehome")
-
+                               alert(obj.id);
+                               navigate("/serviceHome");
+                                            
                           }
-                          else if(obj.role.id === 3)
+                          else if(obj.role.id === 10)
                           {
                                alert("in admin");
                               /*  navigate("/dietitian_home"); */
