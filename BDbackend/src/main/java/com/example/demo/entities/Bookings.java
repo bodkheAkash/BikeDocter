@@ -38,7 +38,7 @@ public class Bookings {
 	
 	@ManyToOne
 	@JoinColumn(name="ser_cen_id")
-	ServiceCenter servicecenter;
+	ServiceCentre servicecenter;
 	
 	@ManyToOne
 	@JoinColumn(name="bike_id")
@@ -59,7 +59,7 @@ public class Bookings {
 	}
 
 	public Bookings(int id, Date booking_date, Date appointment_date, Customer customer, Packages packages,
-			ServiceCenter servicecenter, Bikes bike, String bike_reg_no, int base_price, int extra_price,
+			ServiceCentre servicecenter, Bikes bike, String bike_reg_no, int base_price, int extra_price,
 			int estimated_price, Statuses statuses) {
 		super();
 		this.id = id;
@@ -77,7 +77,7 @@ public class Bookings {
 	}
 
 	public Bookings(Date booking_date, Date appointment_date, Customer customer, Packages packages,
-			ServiceCenter servicecenter, Bikes bike, String bike_reg_no, int base_price, int extra_price,
+			ServiceCentre servicecenter, Bikes bike, String bike_reg_no, int base_price, int extra_price,
 			int estimated_price, Statuses statuses) {
 		super();
 		this.booking_date = booking_date;
@@ -133,11 +133,11 @@ public class Bookings {
 		this.packages = packages;
 	}
 
-	public ServiceCenter getServicecenter() {
+	public ServiceCentre getServicecenter() {
 		return servicecenter;
 	}
 
-	public void setServicecenter(ServiceCenter servicecenter) {
+	public void setServicecenter(ServiceCentre servicecenter) {
 		this.servicecenter = servicecenter;
 	}
 

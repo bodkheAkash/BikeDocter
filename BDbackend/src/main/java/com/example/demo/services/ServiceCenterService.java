@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entities.Packages;
-import com.example.demo.entities.ServiceCenter;
+import com.example.demo.entities.ServiceCentre;
 import com.example.demo.repositories.ServiceCenterRepository;
 
 @Service
@@ -15,17 +15,21 @@ public class ServiceCenterService {
 	@Autowired
 	ServiceCenterRepository sercenrepo;
 	
-	public List<ServiceCenter> getAllServiceCenter()
+	public List<ServiceCentre> getAllServiceCenter()
 	{
 		return sercenrepo.findAll();
 	}
 	
-	public List<ServiceCenter>getByAreaId(int id)
+	public List<ServiceCentre>getByAreaId(int id)
 	{
 		return sercenrepo.getByAreaId(id);
 	}
-	public ServiceCenter getServiceCenter(int id)
+	public ServiceCentre getServiceCenter(int id)
 	{
 		return sercenrepo.findById(id).get();
+	}
+	public ServiceCentre save(ServiceCentre servicecentre)
+	{
+		return sercenrepo.save(servicecentre);
 	}
 }

@@ -6,14 +6,15 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import com.example.demo.entities.Ratings;
 import com.example.demo.entities.ServiceCentre;
 
 
-
 @Repository
-public interface ServiceCenterRepository extends JpaRepository<ServiceCentre, Integer> {
+public interface RatingsRepository extends JpaRepository<Ratings, Integer> {
 	
-	@Query("select s from ServiceCentre s where s.area.id=:id ")
-	public List<ServiceCentre>getByAreaId(int id);
+	@Query("SELECT AVG(r.rating) FROM Ratings r WHERE r.serviceCenter.id = :id GROUP BY r.serviceCenter.id")
+	public float getAvgRating(int id);
+			
 
 }

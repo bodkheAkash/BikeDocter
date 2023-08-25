@@ -10,17 +10,14 @@ import ServiceRegistration from './Component/Registration/ServiceCenterRegistrat
 import LoginNewPage from './Component/Login/LoginNewPage';
 import CustomerHome from './Component/HomePage/CustomerHome';
 import ServiceHome from './Component/HomePage/CustomerHome';
-import ServiceCenterRegistration from './Component/Registration/ServiceCenterRegistration';
 import { useSelector } from 'react-redux';
-import { BookingList } from './Component/UseCases/BookingList';
-import AdminHome from './Component/HomePage/AdminHome'
 import Logout from './Component/Logout/Logout';
-import AdminServiceCenterVerification from './Component/UseCases/AdminServiceCenterVerification ';
-import { LoginListWithDelete } from './Component/UseCases/LoginListWithDelete';
-import ViewBookings from './Component/UseCases/ViewBookings';
-import Crousal from './Component/HomePage/Crousal';
-import {pic} from './Component/Images/Img2.jpg'
-import CardGrid from './Component/HomePage/CardGrid';
+import BookingService from './Component/Registration/BookingService';
+import UserHome from './Component/UseCases/UserHome';
+import ServiceProgress from './Component/UseCases/ServiceProgress';
+import ViewServiceCenter from './Component/UseCases/ViewServiceCenter';
+import ChangePassword from './Component/UseCases/ChangePassword';
+import Rating from './Component/UseCases/Rating';
 
 function App() {
 
@@ -45,7 +42,7 @@ function App() {
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/bookinglist">
+                  <a className="nav-link" href="/#">
                     Contact Us
                   </a>
                 </li>
@@ -70,7 +67,7 @@ function App() {
                       </a>
                     </li>
                     <li>
-                      <a className="dropdown-item" href="/serviceregistration">
+                      <a className="dropdown-item" href="/servicecenterregistration">
                         Service Center
                       </a>
                     </li>
@@ -81,10 +78,7 @@ function App() {
           </div>
         </nav>
         </div>
-        <Crousal/>
-        <CardGrid/>
         <div>
-
          <Routes>
          <Route
                 path="customerregistration"
@@ -98,16 +92,16 @@ function App() {
                 element={<LoginNewPage/>}></Route>
                 <Route path="userlogin"
                 element={<LoginNewPage/>}></Route>
-                <Route path="serviceregistration" element={<ServiceCenterRegistration/>}></Route>
-                <Route path="customerhome" element={<CustomerHome />}></Route>
-                <Route path="serviceHome" element={<ServiceHome />}></Route>
-                <Route path="bookinglist" element={<BookingList />}></Route>
-                <Route path="/admin_Home" element={<AdminHome/>}></Route>
-                <Route path="/Verifycenters" element={<AdminServiceCenterVerification/>}></Route>
-                <Route path="/allLogin" element={<LoginListWithDelete/>}></Route>
-                <Route path="/allbooking" element={<ViewBookings/>}></Route>
-                <Route path="/logout" element={<Logout/>}></Route>
-              
+              <Route path="customerhome" element={<CustomerHome/>}></Route>
+              <Route path="logout" element={<Logout/>}></Route>
+              <Route path="userhome" element={<UserHome/>}></Route>
+             <Route path="changepassword" element={<ChangePassword/>}></Route>
+             <Route path="viewServiceCenter" element={<ViewServiceCenter/>}></Route>
+            <Route path="bookingservice" element={<BookingService/>}></Route>
+            <Route path="rating" element={<Rating/>}></Route>
+            <Route path="serviceprogress" element={<ServiceProgress/>}></Route>
+             <Route path="servicehome" element={<ServiceHome/>}></Route>
+            
          </Routes>
         </div>
       </div>
