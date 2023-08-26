@@ -16,6 +16,7 @@ import ServiceCenterHome from './Component/HomePage/ServiceCenterHome';
 import Logout from './Component/Logout/Logout';
 import UpdatePrice from './Component/UseCases/UpdatePrice';
 import UpdateStatus from './Component/UseCases/UpdateStatus';
+import AdminHome from './Component/HomePage/AdminHome';
 
 function App() {
 
@@ -92,6 +93,7 @@ function App() {
                 <Route path="/viewbookings" element={<BookingList/>}></Route> 
                 <Route path="/updateprice" element={<UpdatePrice/>}></Route>
                 <Route path="/updatestatus" element={<UpdateStatus/>}></Route>
+                <Route path="/adminhome" element={<AdminHome/>}></Route>
                 <Route path="/logout" element={<Logout/>}></Route> 
                          
          </Routes>

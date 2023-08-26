@@ -74,7 +74,8 @@ export default function LoginNewPage()
                           else if(obj.role.id === 10)
                           {
                                alert("in admin");
-                              /*  navigate("/dietitian_home"); */
+                               navigate("/adminhome");
+                               
 
                           }
                           

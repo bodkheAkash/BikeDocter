@@ -50,8 +50,8 @@ public class Bookings {
 	int base_price,extra_price,estimated_price;
 
 	@ManyToOne
-	@JoinColumn(name="statusid")
-	Statuses statuses;
+	@JoinColumn(name="status")
+	Statuses status;
 	
 	public Bookings() {
 		super();
@@ -72,7 +72,7 @@ public class Bookings {
 		this.base_price = base_price;
 		this.extra_price = extra_price;
 		this.estimated_price = estimated_price;
-		this.statuses = statuses;
+		this.status = statuses;
 	}
 
 	public Bookings(Date booking_date, Date appointment_date, Customer customer, Packages packages,
@@ -89,7 +89,7 @@ public class Bookings {
 		this.base_price = base_price;
 		this.extra_price = extra_price;
 		this.estimated_price = estimated_price;
-		this.statuses = statuses;
+		this.status = statuses;
 	}
 
 	public int getId() {
@@ -180,12 +180,12 @@ public class Bookings {
 		this.estimated_price = estimated_price;
 	}
 
-	public Statuses getStatuses() {
-		return statuses;
+	public Statuses getStatus() {
+		return status;
 	}
 
-	public void setStatuses(Statuses statuses) {
-		this.statuses = statuses;
+	public void setStatus(Statuses status) {
+		this.status = status;
 	}
 	
 	

@@ -5,7 +5,7 @@ import java.sql.Date;
 public class BookingData {
 	
 	Date booking_date,appointment_date;
-	int customer_id,package_id,ser_cen_id,bike_id,base_price,extra_price,estimated_price,statusid;
+	int customer_id,package_id,ser_cen_id,bike_id,base_price,extra_price,estimated_price,status;
 	String bike_reg_no;
 	public Date getBooking_date() {
 		return booking_date;
@@ -61,11 +61,11 @@ public class BookingData {
 	public void setEstimated_price(int estimated_price) {
 		this.estimated_price = estimated_price;
 	}
-	public int getStatusid() {
-		return statusid;
+	public int getStatus() {
+		return status;
 	}
-	public void setStatusid(int statusid) {
-		this.statusid = statusid;
+	public void setStatus(int status) {
+		this.status = status;
 	}
 	public String getBike_reg_no() {
 		return bike_reg_no;
