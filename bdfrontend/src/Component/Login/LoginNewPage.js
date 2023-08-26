@@ -39,7 +39,7 @@ export default function LoginNewPage()
             body: JSON.stringify(info)
         }
         fetch("http://localhost:8080/chkLogin",reqOptions)
-        .then(resp => resp.text())
+        .then(resp =>resp.text())
         .then(text => text.length ? JSON.parse(text) : {})
         .then(obj => {
                    if(Object.keys(obj).length === 0)
@@ -67,13 +67,14 @@ export default function LoginNewPage()
                           else if(obj.role.id  === 5)
                           {
                                alert("in service center");
+                               alert(obj.id);
                                navigate("/serviceHome");
-
+                                            
                           }
                           else if(obj.role.id === 10)
                           {
                                alert("in admin");
-                               navigate("/admin_Home");
+                              /*  navigate("/dietitian_home"); */
 
                           }
                           
@@ -83,34 +84,47 @@ export default function LoginNewPage()
     }
 
 
-     return(
-        <div>
-
-            <div class="login-box">
-                <h2 style={{ fontSize: '18px', color: 'blue' ,fontWeight: 'bold'}}>Login</h2>
-                <form>
-                    <div class="input-group">
-                    <label htmlFor= "uid" className="form-label">Enter username :</label>
-                    <input type="text" className="form-control" id="uid" name="uid" placeholder="Enter your username" value={info.uid} 
+    return (
+        <div className="container-fluid p-5">
+          <div className="row justify-content-center">
+            <div className="col-md-6">
+              <div className="card">
+                <div
+                  className="card-body border border-dark"
+                  style={{ backgroundColor: "lightgray" }}
+                >
+                  <h2 className="card-title mb-4">Login</h2>
+                  <form >
+                    <div className="form-group">
+                      <label htmlFor="user-id">User ID:</label>
+                      <input type="text" className="form-control" id="uid" name="uid" placeholder="Enter your username" value={info.uid} 
                         onChange={(e)=>{dispatch({type:'update',fld:'uid',val:e.target.value})}}></input>
                     </div>
-                    <div class="input-group">
-                    <label htmlFor= "pwd" className="form-label">Enter password : </label>
-                    <input type="text" className="form-control" id="pwd" name="pwd" placeholder="Enter your password"  value={info.pwd} 
+                    <div className="form-group">
+                      <label htmlFor="password">Password:</label>
+                      <input type="password" className="form-control" id="pwd" name="pwd" placeholder="Enter your password"  value={info.pwd} 
                        onChange={(e)=>{dispatch({type:'update',fld:'pwd',val:e.target.value})}}></input>
+
                     </div>
-                    <div className="button-group">
-                    <button type="button" className="btn btn-primary px-3" onClick={(e)=>{sendData(e)}}>Login</button> 
-                    {/*} <button type="button" className="btn btn-primary px-3">Login</button> */}
-                    <button type="reset" className="btn btn-primary px-3"onClick={(e)=>{dispatch({type:'reset'})}}>Reset</button>
+                    <Link to="#" className="nav-link px-3">
+                      Forget Password?
+                    </Link>
+                    <div className="form-group">
+                    <button type="submit" className="btn btn-primary" onClick={(e)=>{sendData(e)}}>Login</button>
+                    <button type="reset" className="btn btn-primary"onClick={(e)=>{dispatch({type:'reset'})}}>Reset</button>
                     </div>
+<<<<<<< HEAD
                     
                 </form>
                 <p>{JSON.stringify(info)}</p>
                 <p>{msg}</p>
+=======
+                  </form>
+>>>>>>> 1e821b6984513413410a6825913839d125f15033
                 </div>
-              
-               
+              </div>
+            </div>
+          </div>
         </div>
-    )
+      );
 }

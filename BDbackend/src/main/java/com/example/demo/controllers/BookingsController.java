@@ -15,7 +15,7 @@ import com.example.demo.entities.BookingData;
 import com.example.demo.entities.Bookings;
 import com.example.demo.entities.Customer;
 import com.example.demo.entities.Packages;
-import com.example.demo.entities.ServiceCenter;
+import com.example.demo.entities.ServiceCentre;
 import com.example.demo.entities.Statuses;
 import com.example.demo.services.AreaService;
 import com.example.demo.services.BikesService;
@@ -53,7 +53,7 @@ public class BookingsController {
 	{
 		Customer customer=custser.getById(bookdata.getCustomer_id());
 		Packages packages=packser.getPackage(bookdata.getPackage_id());
-		ServiceCenter servicecenter=sercenser.getServiceCenter(bookdata.getSer_cen_id());
+		ServiceCentre servicecenter=sercenser.getServiceCenter(bookdata.getSer_cen_id());
 		Bikes bike=bikeser.getBike(bookdata.getBike_id());
 		Statuses statuses=statser.getStatuses(bookdata.getStatusid());
 		Bookings booking=new Bookings(bookdata.getBooking_date(),bookdata.getAppointment_date(),customer,packages,servicecenter,bike,bookdata.getBike_reg_no(),bookdata.getBase_price(),bookdata.getExtra_price(),bookdata.getEstimated_price(),statuses);
@@ -64,6 +64,7 @@ public class BookingsController {
 	@GetMapping("getBookingByCustomerId")
 	public List<Bookings>getBookingByCustomerId(@RequestParam("id") int id)
 	{
+		System.out.println(id);
 		return bookser.getBookingByCustomerId(id);
 	}
 

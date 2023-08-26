@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { NavDropdown } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import { Link, Navigate, Outlet } from "react-router-dom";
+import { Link, Navigate, Outlet, Routes,Route } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import DateTime from "../../DateTime";
+
+
 
 
 export default function CustomerHome()
@@ -70,7 +72,7 @@ export default function CustomerHome()
                         </Link>
                       </NavDropdown.Item>
                       <NavDropdown.Item>
-                        <Link to="#" className="nav-link">
+                        <Link to="/changepassword" className="nav-link">
                           Change Password
                         </Link>
                       </NavDropdown.Item>
@@ -94,7 +96,7 @@ export default function CustomerHome()
                   </li>
     
                   <li>
-                    <Link to="#" className="nav-link px-3">
+                    <Link to="/rating" className="nav-link px-3">
                       Rate A Service
                     </Link>
                   </li>
@@ -131,6 +133,7 @@ export default function CustomerHome()
           <div style={{ minHeight: "100%" }}>
             <Outlet />
           </div>
+          
         </div>
       );
 }

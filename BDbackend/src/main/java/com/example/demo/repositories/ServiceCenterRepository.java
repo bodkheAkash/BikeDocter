@@ -6,12 +6,14 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.example.demo.entities.ServiceCenter;
+import com.example.demo.entities.ServiceCentre;
+
+
 
 @Repository
-public interface ServiceCenterRepository extends JpaRepository<ServiceCenter, Integer> {
+public interface ServiceCenterRepository extends JpaRepository<ServiceCentre, Integer> {
 	
-	@Query("select s from ServiceCenter s where s.area.id=:id ")
-	public List<ServiceCenter>getByAreaId(int id);
+	@Query("select s from ServiceCentre s where s.area.id=:id ")
+	public List<ServiceCentre>getByAreaId(int id);
 
 }

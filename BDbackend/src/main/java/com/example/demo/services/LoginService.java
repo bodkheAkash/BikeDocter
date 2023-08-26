@@ -29,5 +29,8 @@ public class LoginService {
 
 		return l;
 	}
-
+	public int changePassword(String newpassword,String username)
+	{
+		return lrepo.changePassword(newpassword,username);
+	}
 }

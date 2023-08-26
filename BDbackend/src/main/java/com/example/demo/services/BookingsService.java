@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entities.Bookings;
+import com.example.demo.entities.Customer;
 import com.example.demo.repositories.BookingsRepository;
 
 @Service
@@ -13,6 +14,9 @@ public class BookingsService {
 	
 	@Autowired
 	BookingsRepository bookrepo;
+	
+	@Autowired
+	CustomerService custser;
 	
 	public List<Bookings>getAllBookings()
 	{
@@ -26,6 +30,7 @@ public class BookingsService {
 	
 	public List<Bookings>getBookingByCustomerId(int id)
 	{
-		return bookrepo.getBookingsByCustomerId(id);
+		Customer c=custser.getById(id);
+		return bookrepo.getBookingsByCustomerId(c);
 	}
 }

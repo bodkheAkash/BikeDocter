@@ -238,7 +238,7 @@ export default function CustomerRegistration()
                   </select>
                 </td>
               </tr>
-              <tr className="form-group">
+              <tr className="form-gropu">
                                 <td>
                                     <label>Answer:</label>
                                 </td>

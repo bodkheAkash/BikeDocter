@@ -1,14 +1,14 @@
 package com.example.demo.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name="service_centre")
@@ -33,6 +33,31 @@ public class ServiceCentre {
 	@OneToOne
 	@JoinColumn(name="login_id")
 	Login login;
+
+	public ServiceCentre() {
+		super();
+	}
+
+	public ServiceCentre(int id, String name, String phone, String email, int status, Area area, Login login) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.phone = phone;
+		this.email = email;
+		this.status = status;
+		this.area = area;
+		this.login = login;
+	}
+
+	public ServiceCentre(String name, String phone, String email, int status, Area area, Login login) {
+		super();
+		this.name = name;
+		this.phone = phone;
+		this.email = email;
+		this.status = status;
+		this.area = area;
+		this.login = login;
+	}
 
 	public int getId() {
 		return id;
@@ -66,6 +91,14 @@ public class ServiceCentre {
 		this.email = email;
 	}
 
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
 	public Area getArea() {
 		return area;
 	}
@@ -82,31 +115,6 @@ public class ServiceCentre {
 		this.login = login;
 	}
 
-	
-	public int getStatus() {
-		return status;
-	}
-
-	public void setStatus(int status) {
-		this.status = status;
-	}
-
-	public ServiceCentre() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public ServiceCentre(String name, String phone, String email, Area area, Login login,int status) {
-		super();
-		this.name = name;
-		this.phone = phone;
-		this.email = email;
-		this.area = area;
-		this.login = login;
-		this.status=status;
-	}
-
-	
 	
 	
 

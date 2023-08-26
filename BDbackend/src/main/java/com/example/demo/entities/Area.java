@@ -21,7 +21,7 @@ public class Area {
 	@Column
 	private  String area;
 	
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name="city_id")
 	City city;
 
