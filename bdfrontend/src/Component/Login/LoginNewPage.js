@@ -113,14 +113,7 @@ export default function LoginNewPage()
                     <button type="submit" className="btn btn-primary" onClick={(e)=>{sendData(e)}}>Login</button>
                     <button type="reset" className="btn btn-primary"onClick={(e)=>{dispatch({type:'reset'})}}>Reset</button>
                     </div>
-<<<<<<< HEAD
-                    
-                </form>
-                <p>{JSON.stringify(info)}</p>
-                <p>{msg}</p>
-=======
                   </form>
->>>>>>> 1e821b6984513413410a6825913839d125f15033
                 </div>
               </div>
             </div>

@@ -14,22 +14,8 @@ import { useSelector } from 'react-redux';
 import BookingList, { ViewBookings } from './Component/UseCases/BookingList';
 import ServiceCenterHome from './Component/HomePage/ServiceCenterHome';
 import Logout from './Component/Logout/Logout';
-<<<<<<< HEAD
-import AdminServiceCenterVerification from './Component/UseCases/AdminServiceCenterVerification ';
-import { LoginListWithDelete } from './Component/UseCases/LoginListWithDelete';
-import GetTransaction from './Component/HomePage/GetTransaction';
-import ViewBookings from './Component/UseCases/ViewBookings';
-import Crousal from './Component/HomePage/Crousal';
-import {pic} from './Component/Images/Img2.jpg'
-import CardGrid from './Component/HomePage/CardGrid';
-import "bootstrap/dist/css/bootstrap.min.css";
-import PaymentComponent from './Component/HomePage/PaymentComponent';
-import BookingsForServiceCenter from './Component/HomePage/BookingsForServiceCenter ';
-
-=======
 import UpdatePrice from './Component/UseCases/UpdatePrice';
 import UpdateStatus from './Component/UseCases/UpdateStatus';
->>>>>>> 1e821b6984513413410a6825913839d125f15033
 
 function App() {
 
@@ -90,10 +76,6 @@ function App() {
           </div>
         </nav>
         </div>
-<<<<<<< HEAD
-        
-=======
->>>>>>> 1e821b6984513413410a6825913839d125f15033
         <div>
          <Routes>
          <Route
@@ -102,25 +84,6 @@ function App() {
               <Route
                 path="servicecenterregistration" element={<ServiceRegistration/>}
               ></Route>
-<<<<<<< HEAD
-              <Route path="login"
-                element={<LoginNewPage/>}></Route>
-                <Route path="userlogin"
-                element={<LoginNewPage/>}></Route>
-                <Route path="serviceregistration" element={<ServiceCenterRegistration/>}></Route>
-                <Route path="customerhome" element={<CustomerHome />}></Route>
-                <Route path="serviceHome" element={<ServiceHome />}></Route>
-                <Route path="bookinglist" element={<BookingList />}></Route>
-                <Route path="/admin_Home" element={<AdminHome/>}></Route>
-                <Route path="/Verifycenters" element={<AdminServiceCenterVerification/>}></Route>
-                <Route path="/allLogin" element={<LoginListWithDelete/>}></Route>
-               
-                <Route path="/viewTransactions" element={<GetTransaction/>}></Route>
-                <Route path="/payment" element={<BookingsForServiceCenter/>}></Route>
-                <Route path="/logout" element={<Logout/>}></Route>
-                
-              
-=======
               <Route path="/login" element={<LoginNewPage/>}></Route>
                 <Route path="/userlogin" element={<LoginNewPage/>}></Route>
                 <Route path="/serviceregistration" element={<ServiceCenterHome/>}></Route>
@@ -131,7 +94,6 @@ function App() {
                 <Route path="/updatestatus" element={<UpdateStatus/>}></Route>
                 <Route path="/logout" element={<Logout/>}></Route> 
                          
->>>>>>> 1e821b6984513413410a6825913839d125f15033
          </Routes>
         </div>
         
