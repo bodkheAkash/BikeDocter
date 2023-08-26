@@ -46,7 +46,6 @@ export default function AdminServiceCenterVerification() {
             <tr key={center.id}>
               <td>{center.id}</td>
               <td>{center.name}</td>
-              {/* <td>{center.address}</td> */}
               <td>{center.phone}</td>
               <td>{center.email}</td>
               <td>{center.verified ? "Yes" : "No"}</td>

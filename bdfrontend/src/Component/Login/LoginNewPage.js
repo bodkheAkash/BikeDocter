@@ -102,7 +102,7 @@ export default function LoginNewPage()
                     </div>
                     <div className="form-group">
                       <label htmlFor="password">Password:</label>
-                      <input type="text" className="form-control" id="pwd" name="pwd" placeholder="Enter your password"  value={info.pwd} 
+                      <input type="password" className="form-control" id="pwd" name="pwd" placeholder="Enter your password"  value={info.pwd} 
                        onChange={(e)=>{dispatch({type:'update',fld:'pwd',val:e.target.value})}}></input>
 
                     </div>

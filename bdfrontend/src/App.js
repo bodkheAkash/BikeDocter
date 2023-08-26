@@ -13,6 +13,9 @@ import ServiceHome from './Component/HomePage/CustomerHome';
 import { useSelector } from 'react-redux';
 import BookingList, { ViewBookings } from './Component/UseCases/BookingList';
 import ServiceCenterHome from './Component/HomePage/ServiceCenterHome';
+import Logout from './Component/Logout/Logout';
+import UpdatePrice from './Component/UseCases/UpdatePrice';
+import UpdateStatus from './Component/UseCases/UpdateStatus';
 
 function App() {
 
@@ -86,7 +89,11 @@ function App() {
                 <Route path="/serviceregistration" element={<ServiceCenterHome/>}></Route>
                 <Route path="/customerhome" element={<CustomerHome />}></Route>
                 <Route path="/serviceHome" element={<ServiceCenterHome/>}></Route>  
-                <Route path="/viewbookings" element={<BookingList/>}></Route>           
+                <Route path="/viewbookings" element={<BookingList/>}></Route> 
+                <Route path="/updateprice" element={<UpdatePrice/>}></Route>
+                <Route path="/updatestatus" element={<UpdateStatus/>}></Route>
+                <Route path="/logout" element={<Logout/>}></Route> 
+                         
          </Routes>
         </div>
       </div>
