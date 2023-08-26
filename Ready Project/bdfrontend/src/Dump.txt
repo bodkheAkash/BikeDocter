@@ -1,0 +1,66 @@
+ {/* <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div> */}
+
+
+
+
+    <td>
+                  <select
+                    className="form-group"
+                    id="package_id"
+                    name="package_id"
+                    onChange={(e) => {
+                      dispatch({
+                        type: "update",
+                        fld: "package_id",
+                        value: e.target.value,
+                      });
+                    }}
+                  >
+                    <option>Select One</option>
+                    {allpackages.map((packages) => {
+                      return (
+                        <option value={packages.id} key={packages.id}>
+                            <table className="Table">
+                                <tr>
+                                    <td>{packages.name}</td>
+                                    <td>{packages.details}</td>
+                                    <td>{packages.cost}</td>
+
+                                </tr>
+                            </table>
+                        </option>
+                      );
+                    })}
+                  </select>
+                </td>
+
+
+                 {allpackages.map((packages) => (
+            
+                    <td>{packages.id}</td>
+                    <td>{packages.name}</td>
+                    <td>{packages.details}</td>
+                    <td>{packages.cost}</td>
+                 
+
+                 <input
+                     type="radio"
+                    id="package_id"
+                    value={info.package_id.value}
+                    onClick={(e)=>{dispatch({type:"update",fld:"package_id",value:e.target.value})}}
+                                     />
