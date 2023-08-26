@@ -16,7 +16,7 @@ public class SecurityQuestionService {
 	@Autowired
 	SecurityQuestionRepository sqrepo;
 	
-	@GetMapping("/getQuestions")
+	
 	public List<SecurityQuestion> getAll()
 	{
 		return sqrepo.findAll();

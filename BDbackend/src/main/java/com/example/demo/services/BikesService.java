@@ -29,4 +29,14 @@ public class BikesService {
 	{
 		return bikerepo.findById(id).get();
 	}
+	
+	public List<Bikes> getAllBikes() 
+    {
+        return bikerepo.findAll();
+    }
+    
+	public void deleteBike(int id) {
+    	bikerepo.deleteById(id);
+    }
+
 }

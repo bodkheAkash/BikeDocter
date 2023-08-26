@@ -1,5 +1,6 @@
 package com.example.demo.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,5 +33,12 @@ public class LoginService {
 	public int changePassword(String newpassword,String username)
 	{
 		return lrepo.changePassword(newpassword,username);
+	}
+	
+	public void deleteRole(int id) {
+		lrepo.deleteById(id);
+    }
+	public List<Login> getAllBikes() {
+        return lrepo.findAll();
 	}
 }

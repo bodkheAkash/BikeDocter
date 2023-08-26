@@ -13,8 +13,11 @@ import com.example.demo.entities.ServiceCentre;
 @Repository
 public interface RatingsRepository extends JpaRepository<Ratings, Integer> {
 	
-	@Query("SELECT AVG(r.rating) FROM Ratings r WHERE r.serviceCenter.id = :id GROUP BY r.serviceCenter.id")
-	public float getAvgRating(int id);
+//	@Query("SELECT AVG(r.rating) FROM Ratings r WHERE r.serviceCenter.id = :id GROUP BY r.serviceCenter.id")
+	@Query("select r rating,r.comment from Ratings r where r.serviceCenter.id = :id")
+	public List<Ratings> getAvgRating(int id);
+	
+	
 			
 
 }

@@ -23,5 +23,15 @@ public class PackagesService {
 	{
 		return packrepo.findById(id).get();
 	}
+    public Packages updateServicePackage(int id, Packages servicePackage) {
+        if (packrepo.existsById(id)) {
+        	servicePackage.setId(id);
+            return packrepo.save(servicePackage);
+        }
+        return null;
+    }
+ public void deleteServicePackage(int id) {
+        packrepo.deleteById(id);
+    }
 
 }

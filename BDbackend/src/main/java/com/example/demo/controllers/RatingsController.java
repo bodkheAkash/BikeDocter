@@ -49,7 +49,7 @@ public class RatingsController {
 	}
 	
 	@GetMapping("getAvgRating")
-	public float getAvgRating(@RequestParam("id") int id)
+	public List<Ratings> getAvgRating(@RequestParam("id") int id)
 	{
 		return ratingser.getAvgRating(id);
 	}

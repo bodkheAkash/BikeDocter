@@ -2,6 +2,7 @@ package com.example.demo.services;
 
 
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,21 @@ public Customer getByLoginid(int loginid)
 	}
 	return customer;
 }
+
+    public List<Customer> getAllCustomers() {
+        return custrepo.findAll();
+    }
+
+public Customer getCustomerById(int id) {
+        return custrepo.findById(id).orElse(null);
+    }
+
+public void deleteByLoginId(int id)
+{
+	custrepo.deleteByLoginId(id);
+}
+
+   
 
 
 

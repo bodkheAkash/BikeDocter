@@ -26,7 +26,7 @@ public class RatingsService {
 		return ratingrepo.save(rating);
 	}
 	
-	public float getAvgRating(int id)
+	public List<Ratings> getAvgRating(int id)
 	{
 		return ratingrepo.getAvgRating(id);
 	}

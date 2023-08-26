@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.entities.Login;
 import com.example.demo.entities.LoginCheck;
+import com.example.demo.entities.PassBasedEnc;
+import com.example.demo.entities.SaltValue;
 import com.example.demo.services.CustomerService;
 import com.example.demo.services.LoginService;
 
@@ -25,17 +27,23 @@ public class LoginController {
 	
 	@Autowired
 	CustomerService custser;
+	
+	@Autowired
+	SaltValue saltValue;
 
 	@PostMapping("/chkLogin")
-	public Login chklogin(@RequestBody LoginCheck lcheck) {
-		System.out.println(lcheck.getUid() + "    " + lcheck.getPwd());
-		return lser.getLogin(lcheck.getUid(), lcheck.getPwd());
+	public Login chklogin(@RequestBody LoginCheck lcheck){
+		//System.out.println(lcheck.getUid() + "    " + lcheck.getPwd());
+		String encrypted=PassBasedEnc.generateSecurePassword(lcheck.getPwd(),saltValue.getSalt());
+		return lser.getLogin(lcheck.getUid(),encrypted);
+		}
 
-	}
+	
 
 	@PostMapping("/changePwd")
 	public int changePassword(@RequestParam("newPwd") String newpassword, @RequestParam("username") String username) {
-		return lser.changePassword(newpassword, username);
+		String encrypted=PassBasedEnc.generateSecurePassword(newpassword,saltValue.getSalt());
+		return lser.changePassword(encrypted, username);
 	}
 
 	@GetMapping("/admin/getallLogin")
