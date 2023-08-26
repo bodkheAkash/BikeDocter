@@ -24,6 +24,12 @@ export default function AdminHome(){
           <a class="nav-link" href="/allbooking">ViewBooking</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="/viewTransactions">Transaction</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/payment">Payment</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="/logout">Logout</a>
         </li>
       </ul>

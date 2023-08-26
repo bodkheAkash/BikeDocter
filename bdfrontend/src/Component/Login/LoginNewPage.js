@@ -104,6 +104,7 @@ export default function LoginNewPage()
                     {/*} <button type="button" className="btn btn-primary px-3">Login</button> */}
                     <button type="reset" className="btn btn-primary px-3"onClick={(e)=>{dispatch({type:'reset'})}}>Reset</button>
                     </div>
+                    
                 </form>
                 <p>{JSON.stringify(info)}</p>
                 <p>{msg}</p>

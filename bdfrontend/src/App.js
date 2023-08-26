@@ -17,10 +17,15 @@ import AdminHome from './Component/HomePage/AdminHome'
 import Logout from './Component/Logout/Logout';
 import AdminServiceCenterVerification from './Component/UseCases/AdminServiceCenterVerification ';
 import { LoginListWithDelete } from './Component/UseCases/LoginListWithDelete';
+import GetTransaction from './Component/HomePage/GetTransaction';
 import ViewBookings from './Component/UseCases/ViewBookings';
 import Crousal from './Component/HomePage/Crousal';
 import {pic} from './Component/Images/Img2.jpg'
 import CardGrid from './Component/HomePage/CardGrid';
+import "bootstrap/dist/css/bootstrap.min.css";
+import PaymentComponent from './Component/HomePage/PaymentComponent';
+import BookingsForServiceCenter from './Component/HomePage/BookingsForServiceCenter ';
+
 
 function App() {
 
@@ -81,8 +86,7 @@ function App() {
           </div>
         </nav>
         </div>
-        <Crousal/>
-        <CardGrid/>
+        
         <div>
 
          <Routes>
@@ -105,11 +109,15 @@ function App() {
                 <Route path="/admin_Home" element={<AdminHome/>}></Route>
                 <Route path="/Verifycenters" element={<AdminServiceCenterVerification/>}></Route>
                 <Route path="/allLogin" element={<LoginListWithDelete/>}></Route>
-                <Route path="/allbooking" element={<ViewBookings/>}></Route>
+               
+                <Route path="/viewTransactions" element={<GetTransaction/>}></Route>
+                <Route path="/payment" element={<BookingsForServiceCenter/>}></Route>
                 <Route path="/logout" element={<Logout/>}></Route>
+                
               
          </Routes>
         </div>
+        
       </div>
    
   );

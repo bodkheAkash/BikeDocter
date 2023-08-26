@@ -1,9 +1,10 @@
 import pic from '../Images/Img2.jpg';
+import CardGrid from './CardGrid';
 export default function Crousal(){
 
     return (
         <div>
-        <div id="carouselExampleCaptions" class="carousel slide">
+        <div id="carouselExampleCaptions" class="carousel slide carousel-fade">
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -41,6 +42,10 @@ export default function Crousal(){
     <span class="visually-hidden">Next</span>
   </button>
 </div>
+<div>
+    <CardGrid/>
 </div>
+</div>
+
     )
 }
