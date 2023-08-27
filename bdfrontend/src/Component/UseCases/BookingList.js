@@ -256,7 +256,7 @@ export default function ViewBookings() {
                   <th>ID</th>
                   <th>Booking Date</th>
                   <th>Appointment Date</th>
-                  <th>Customer ID</th>
+                  <th>Customer Phone</th>
                   <th>Bike Number</th>
                   {/* Add more table headers as needed */}
                 </tr>
@@ -267,7 +267,7 @@ export default function ViewBookings() {
                     <td>{booking.id}</td>
                     <td>{booking.booking_date}</td>
                     <td>{booking.appointment_date}</td>
-                    <td>{booking.customer.id}</td>
+                    <td>{booking.customer.phone}</td>
                     <td>{booking.bike_reg_no}</td>
                     {/* Add more table cells as needed */}
                   </tr>

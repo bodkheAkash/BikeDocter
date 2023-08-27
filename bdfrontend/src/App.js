@@ -6,10 +6,8 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import Home from './Component/HomePage/Home';
 import { Link, Route, Routes } from 'react-router-dom';
 import CustomerRegistration from './Component/Registration/CustomerRegistration';
-import ServiceRegistration from './Component/Registration/ServiceCenterRegistration';
 import LoginNewPage from './Component/Login/LoginNewPage';
 import CustomerHome from './Component/HomePage/CustomerHome';
-import ServiceHome from './Component/HomePage/CustomerHome';
 import { useSelector } from 'react-redux';
 import BookingList, { ViewBookings } from './Component/UseCases/BookingList';
 import ServiceCenterHome from './Component/HomePage/ServiceCenterHome';
@@ -17,7 +15,8 @@ import Logout from './Component/Logout/Logout';
 import UpdatePrice from './Component/UseCases/UpdatePrice';
 import UpdateStatus from './Component/UseCases/UpdateStatus';
 import AdminHome from './Component/HomePage/AdminHome';
-
+// import ServiceCenterRegistrationSimple from './Component/Registration/ServiceCenterRegistrationSimple';
+import ServiceCenterRegistration from './Component/Registration/ServiceCenterRegistration';
 function App() {
 
   const mystate=useSelector((state)=>state.logged);
@@ -82,8 +81,11 @@ function App() {
          <Route
                 path="customerregistration" element={<CustomerRegistration/>}
               ></Route>
+              {/* <Route
+                path="servicecenterregistration" element={<ServiceCenterRegistrationSimple/>}
+              ></Route> */}
               <Route
-                path="servicecenterregistration" element={<ServiceRegistration/>}
+                path="servicecenterregistration" element={<ServiceCenterRegistration/>}
               ></Route>
               <Route path="/login" element={<LoginNewPage/>}></Route>
                 <Route path="/userlogin" element={<LoginNewPage/>}></Route>

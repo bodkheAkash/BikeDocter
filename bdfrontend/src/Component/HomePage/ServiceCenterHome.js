@@ -4,8 +4,6 @@ import { NavDropdown } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { Link, Navigate, Outlet } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-
-// import { DateTime } from '../DateTime';
 import DateTime from "../../DateTime";
 import { logout } from "../../slice";
 
@@ -17,9 +15,7 @@ export default function ServiceCenterHome() {
 
 
   useEffect(() => {
-    // var loginid = localStorage.getItem("loginid");
     const loginid= JSON.parse(localStorage.getItem("loggedUser")).id;
-    // const scname= JSON.parse(localStorage.getItem("loggedUser")).name;
     fetch("http://localhost:8080/getScDetailsByLoginid?loginid="+loginid)
 
       .then((resp) => {
@@ -41,51 +37,11 @@ export default function ServiceCenterHome() {
         console.error("Fetch error:", error);
       });
   }, []);
-  
-  
-
   useEffect(() => {
     if (mystate.logged === false) {
       navigate("/userlogin");
     }
-    //showServiceCenterData();
   }, []);
-
-
-  // const[user,setUser] =useState(null);
-  // const mystate = useSelector((state) => state.logged);
-  // const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   const id= JSON.parse(localStorage.getItem("loggedUser")).id;
-  //   const loginid = JSON.parse(localStorage.getItem("loggedUser")).id;
-  //   localStorage.setItem("loginid", loginid);
-  //    console.log(loginid)
-  //   fetch("http://localhost:8080/getScDetailsByLoginid=" + loginid)
-  //     .then(resp => {
-  //       if (!resp.ok) {
-  //         throw new Error("Network response was not ok");
-  //       }
-  //       return resp.json();
-  //     })
-  //     .then(obj => {
-  //       localStorage.setItem("ServiceCentre", JSON.stringify(obj));
-  //       const scid=JSON.parse(localStorage.getItem("ServiceCentre")).id;
-  //       localStorage.setItem("servenid", scid);
-  //       console.log("Service Centre id"+scid)
-  //       setUser(obj);
-  //     })
-  //     .catch(error => {
-  //       console.error("Fetch error:", error);
-  //     });
-
-  
-  //   if (mystate.logged === false) {
-  //     navigate("/userlogin");
-  //   }
-   
-  // }, []);
-
   return (
     <div>
       <nav
@@ -183,34 +139,7 @@ export default function ServiceCenterHome() {
 
         <Outlet />
       </div>
-
-{/* <div
-        style={{
-          backgroundColor: "grey",
-          textAlign: "center",
-          color: "black",
-        }}
-      >
-        <h3>
-        Welcome - {user && user.fname} {user && user.lname}
-        </h3>
-      </div>
-      <div style={{ backgroundColor: "lightgray",textAlign:"center"}}>{DateTime()}</div>
-      <br />
-      <div style={{ minHeight: "100%" }}>
-        <Outlet />
-      </div> */}
-
-
     </div>
     
   );
 }
-
-// export default ServiceHome()
-// {
-
-//     return(
-//     <h1>In service centre Home</h1>
-//     )
-// }
