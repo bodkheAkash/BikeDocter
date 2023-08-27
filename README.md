@@ -11,6 +11,9 @@ This project aims to ease the process of vehicle servicing and gaining a custome
 We the creators:
 
 Akash: akashbodkhe@gmail.com
+
 Aniket: khavnekaraniket@gmail.com
+
 Deepak: singhdeepaksingh025@gmail.com
+
 Rutvij: rutvijm97@gmail.com
