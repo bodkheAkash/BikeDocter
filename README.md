@@ -6,4 +6,11 @@ This project intends to create an Online Vehicle Servicing Booking portal. The b
 
 The Service centres can avail benefits from this portal by coming into the light for a mass customer base and getting more business. They can receive bookings, update status of the work and receive payments.
 
-All in all, this project aims to ease the process of vehicle servicing and gaining a customer base.
+This project aims to ease the process of vehicle servicing and gaining a customer base.
+
+We the creators:
+
+Akash: akashbodkhe@gmail.com
+Aniket: khavnekaraniket@gmail.com
+Deepak: singhdeepaksingh025@gmail.com
+Rutvij: rutvijm97@gmail.com
