@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -67,5 +69,44 @@ public class BookingsController {
 		System.out.println(id);
 		return bookser.getBookingByCustomerId(id);
 	}
+	@GetMapping("/getByBookingId")
+	public Bookings getByBookingId(@RequestParam("id") int id)
+	{
+		return bookser.getByBookingId(id);
+	}
+	@GetMapping("/getBookingsByScId")
+	public List<Bookings> getBookingsBySerCenId(@RequestParam("scid")int scid)
+	{
+		return bookser.getBookingsBySerCenId(scid);
+	}
+
+	@PutMapping("/updateBookingStatus/{bookingId}")
+	public Bookings updateBookingStatus(@PathVariable("bookingId") int bookingId, @RequestParam("statusId") int statusId) {
+	    Bookings booking = bookser.getBookingById(bookingId); // Assuming you have a method to fetch a booking by its ID
+	    if (booking == null) {
+	        return null;
+	    }
+	    
+	    Statuses newStatus = statser.getStatuses(statusId); // Assuming you have a method to fetch a status by its ID
+	    if (newStatus == null) {
+	        return null;
+	    }
+	    
+	    booking.setStatuses(newStatus);
+	    return bookser.save(booking);
+	}
+	
+	@PutMapping("/updateExtraPrice/{bookingId}")
+	public Bookings updateExtraPrice(@PathVariable("bookingId") int bookingId, @RequestParam("extra_price") int extraprice) {
+	    Bookings booking = bookser.getBookingById(bookingId); // Assuming you have a method to fetch a booking by its ID
+	    if (booking == null) {
+	        // Handle case when booking is not found
+	        return null;
+	    }
+	    
+	    booking.setExtra_price(extraprice);
+	    return bookser.save(booking);
+	}
+
 
 }

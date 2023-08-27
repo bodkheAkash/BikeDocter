@@ -4,14 +4,18 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.services.ServiceCenterService;
 import com.example.demo.entities.Area;
+import com.example.demo.entities.Customer;
 import com.example.demo.entities.Login;
 import com.example.demo.entities.Role;
 import com.example.demo.entities.SecurityQuestion;
@@ -71,7 +75,29 @@ public class ServiceCenterController {
 		ServiceCentre sc=new ServiceCentre(servicecentre.getName(), servicecentre.getPhone(), servicecentre.getEmail(),servicecentre.getStatus(),area, saved);
 		return sercenser.save(sc);
 	}
+	@PostMapping("/admin/servicecen")
+	public ServiceCentre createServiceCenter(@RequestBody ServiceCentre serviceCenter) {
+		return sercenser.createServiceCenter(serviceCenter);
+	}
+	@PutMapping("/admin/servicecen/{id}")
+	public ServiceCentre updateServiceCenter(@PathVariable int id, @RequestBody ServiceCentre serviceCenter) {
+		return sercenser.updateServiceCenter(id, serviceCenter);
+	}
 
+	@DeleteMapping("/admin/servicecen/{id}")
+	public void deleteServiceCenter(@PathVariable int id) {
+		sercenser.deleteServiceCenter(id);
+	}
+	@GetMapping("/admin/servicecen")
+	public List<ServiceCentre> getAllServiceCenters() {
+		return sercenser.getAllServiceCenter();
+	}
+	
+	@GetMapping("/getSetviceCentredetails")
+	public ServiceCentre getByLoginid(@RequestParam("loginid") int loginid)
+	{
+		return sercenser.getByLoginid(loginid);
+	}
 
 
 }

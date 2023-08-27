@@ -12,6 +12,7 @@ import com.example.demo.entities.Area;
 import com.example.demo.entities.Customer;
 import com.example.demo.entities.CustomerRegistration;
 import com.example.demo.entities.Role;
+import com.example.demo.entities.SaltValue;
 import com.example.demo.entities.SecurityQuestion;
 import com.example.demo.services.AreaService;
 import com.example.demo.services.CustomerService;
@@ -20,6 +21,7 @@ import com.example.demo.services.RoleService;
 import com.example.demo.services.SecurityQuestionService;
 import com.example.demo.entities.Customer;
 import com.example.demo.entities.Login;
+import com.example.demo.entities.PassBasedEnc;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -36,6 +38,9 @@ public class CustomerController {
 	@Autowired
 	SecurityQuestionService sqser;
 	
+	@Autowired
+	SaltValue saltValue;
+	
 	@GetMapping("/getCustomerdetails")
 	public Customer getByLoginid(@RequestParam("loginid") int loginid)
 	{
@@ -49,7 +54,11 @@ public class CustomerController {
 		Role role=roleser.getRole(1);
 		SecurityQuestion sq=sqser.getRole((int)custreg.getQuestionid());
 		
-		Login login=new Login(custreg.getUserid(),custreg.getPassword(),custreg.getAnswer(),role,sq);
+		System.out.println(saltValue.getSalt());
+		String encrypted=PassBasedEnc.generateSecurePassword(custreg.getPassword(),saltValue.getSalt());
+		
+		
+		Login login=new Login(custreg.getUserid(),encrypted,custreg.getAnswer(),role,sq);
 		Login saved=loginser.save(login);
 		Area area=areaser.getArea(custreg.getAreaid());
 		
