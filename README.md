@@ -1,4 +1,4 @@
-# BikeDocter
+# BikeDoctor
 
 **Introduction**
 
