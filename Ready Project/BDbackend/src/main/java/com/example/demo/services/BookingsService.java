@@ -88,4 +88,9 @@ public class BookingsService {
      booking.setExtra_price(extraprice);
      return bookrepo.save(booking);
  }
+	
+	 public Bookings createBooking(Bookings booking) {
+	        // Perform any necessary validation or business logic before saving
+	        return bookrepo.save(booking);
+	    }
 }

@@ -61,18 +61,18 @@ export default function LoginNewPage()
                           reduxAction(login())
                           if(obj.role.id === 1)
                           {
-                               alert("in customer");
+                              /*  alert("in customer"); */
                                navigate("/customerhome"); 
                           }
                           else if(obj.role.id  === 2)
                           {
-                               alert("in service center");
+                              /*  alert("in service center"); */
                               navigate("/servicehome")
 
                           }
                           else if(obj.role.id === 3)
                           {
-                               alert("in admin");
+                              /*  alert("in admin"); */
                                navigate("/admin_Home"); 
 
                           }

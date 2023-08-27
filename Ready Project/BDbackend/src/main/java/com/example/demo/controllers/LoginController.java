@@ -34,8 +34,8 @@ public class LoginController {
 	@PostMapping("/chkLogin")
 	public Login chklogin(@RequestBody LoginCheck lcheck){
 		//System.out.println(lcheck.getUid() + "    " + lcheck.getPwd());
-		String encrypted=PassBasedEnc.generateSecurePassword(lcheck.getPwd(),saltValue.getSalt());
-		return lser.getLogin(lcheck.getUid(),encrypted);
+//		String encrypted=PassBasedEnc.generateSecurePassword(lcheck.getPwd(),saltValue.getSalt());
+		return lser.getLogin(lcheck.getUid(),lcheck.getPwd());
 		}
 
 	

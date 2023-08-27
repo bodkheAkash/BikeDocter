@@ -1,6 +1,9 @@
 import { useReducer, useState,useEffect } from "react";
 import { Table } from "react-bootstrap";
 import { Navigate, useNavigate } from "react-router-dom";
+import moment from "moment";
+import { update } from "@react-spring/web";
+
 export default function BookingService()
 {
     const init={
@@ -11,7 +14,7 @@ export default function BookingService()
         package_id:0,
         ser_cen_id:0,
         bike_id:0,
-        bike_reg_no:"",
+        bike_reg_no:{value:"", valid:false,touched :false,error:""},
         base_price:0,
         extra_price:0,
         estimated_price:0,
@@ -19,16 +22,37 @@ export default function BookingService()
 
     };
 
+//     const validateData = (nm,val) => {
+//       let error="", hasError = false;
+
+//       switch(nm) {
+//         case "bikereg":
+//         const bikereg=/^[A-Z]{2}(\d){2}[A-Z]{1,2}(\d){4}$/;
+//         if(!bikereg.test(val)) {
+//           hasError = true;
+//           error="Invalid registration number";
+//     }
+//     else{
+//       error="";
+//     }
+//     break;
+//   }
+//   dispatch({type: "update", fld:nm, value:val,error,valid,touched});
+// };
+
     const reducer=(state,action) =>
     {
         switch(action.type)
         {
             case"update":
-            return {...state,[action.fld]:action.value,};
+              return {...state,[action.fld]:action.value};
+            
             case "reset":
               return init;
-        }
+        
+      
     }
+  }
     const[info,dispatch]=useReducer(reducer,init)
     const [allpackages, setAllpackages] = useState([]);
     const [allarea,setAllarea]=useState([]);
@@ -36,6 +60,38 @@ export default function BookingService()
     const [allservicecenter,setAllservicecenter]=useState([]);
     const [allbrands, setAllbrands] = useState([]);
     const [allmodel, setAllmodel] = useState([]);
+    const [servDate, setServDate] = useState("");
+    const [startDate, setStartDate] = useState("");
+    const [endDate, setEndDate] = useState("");
+    
+    const validateData = (nm, val) => {
+      let error = "",
+        valid = false,
+        touched = true;
+    
+      switch (nm) {
+        case "bikereg":
+          const bikereg = /^[A-Z]{2}\d{2}[A-Z]{1,2}\d{4}$/;
+          if (!bikereg.test(val)) {
+            error = "Invalid registration number";
+          } else {
+            valid = true; // Set the valid flag to true if validation passes
+          }
+          break;
+        // Add additional cases for other fields if needed
+      }
+    
+      dispatch({
+        type: "update",
+        fld: nm,
+        value: val,
+        error,
+        valid,
+        touched,
+      });
+    };
+    
+
 
     const senddata = (e) => {
         e.preventDefault();
@@ -63,7 +119,19 @@ export default function BookingService()
           });
       };
 
-
+      useEffect(() => {
+        var date = new Date();
+    
+        var sevendate = new Date();
+        var seventh_day = new Date(sevendate.setDate(sevendate.getDate() + 7));
+    
+        var startdate = moment(date).format("YYYY-MM-DD");
+        setStartDate(startdate);
+        let enddate = moment(seventh_day).format("YYYY-MM-DD");
+        setEndDate(enddate);
+        // console.log("Date-" + startdate);
+        // console.log("NextDate-" + enddate);
+      });
     const getAreas = (id) => {
         fetch("http://localhost:8080/getAreaByCityId?id=" + id)
           .then((resp) => resp.json())
@@ -119,7 +187,12 @@ export default function BookingService()
                                     id="appointment_date"
                                     placeholder="Enter first name"
                                     value={info.appointment_date.value}
+                                    min={startDate}
+                                    max={endDate}
                                     onChange={(e)=>{dispatch({type:"update",fld:"appointment_date",value:e.target.value})}}
+                                    onBlur={(e) => {
+                                      setServDate(e.target.value);
+                                    }}
                                      />
                                 </td>
                             </tr>
@@ -182,19 +255,30 @@ export default function BookingService()
                 </td>
               </tr>
               <tr className="form-gropu">
-                                <td>
-                                    <label>Enter Bike Registration no:</label>
-                                </td>
-                                <td>
-                                    <input className="form-control" 
-                                    type="text"
-                                    id="bike_reg_no"
-                                    placeholder="Enter Bike Registration no"
-                                    value={info.bike_reg_no.value}
-                                    onChange={(e)=>{dispatch({type:"update",fld:"bike_reg_no",value:e.target.value})}}
-                                     />
-                                </td>
-                            </tr>
+  <td>
+    <label>Enter Bike Registration no: (*Ex: MH12RT1234)</label>
+  </td>
+  <td>
+    <input
+      className={`form-control ${
+        info.bike_reg_no.touched && !info.bike_reg_no.valid
+          ? "is-invalid"
+          : ""
+      }`}
+      type="text"
+      id="bike_reg_no"
+      name="bike_reg_no"
+      placeholder="Enter Bike Registration no"
+      value={info.bike_reg_no.value}
+      onChange={(e) => {
+        validateData("bike_reg_no", e.target.value);
+      }}
+    />
+    {info.bike_reg_no.touched && !info.bike_reg_no.valid && (
+      <div className="invalid-feedback">{info.bike_reg_no.error}</div>
+    )}
+  </td>
+</tr>
               <tr className="form-group">
                 <td>
                   <label htmlFor="cityid"> Select City</label>

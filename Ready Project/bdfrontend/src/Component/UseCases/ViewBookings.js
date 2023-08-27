@@ -84,13 +84,15 @@
 // }
 
 // export default ViewBookings;
+
+
 import React, { useState, useEffect } from "react";
 
 function ViewBookings() {
   const [bookings, setBookings] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/getAllBookings")
+    fetch("http://localhost:8080/admin/bookings")
       .then((response) => response.json())
       .then((data) => setBookings(data))
       .catch((error) => console.error("Error fetching data:", error));

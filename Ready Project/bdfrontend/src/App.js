@@ -20,7 +20,7 @@ import ChangePassword from './Component/UseCases/ChangePassword';
 import Rating from './Component/UseCases/Rating';
 import AdminHome from './Component/HomePage/AdminHome';
 import AdminServiceCenterVerification from './Component/UseCases/AdminServiceCenterVerification ';
-import  {LoginListWithDelete}  from './Component/UseCases/LoginListWithDelete';
+import  LoginListWithDelete  from './Component/UseCases/LoginListWithDelete';
 import ViewBookings from './Component/UseCases/ViewBookings';
 import Payment from './Component/UseCases/Payment';
 import Invoice from './Component/UseCases/Invoice';
@@ -29,6 +29,9 @@ import UpdatePrice from './Component/UseCases/UpdatePrice';
 import UpdateStatus from './Component/UseCases/UpdateStatus';
 import BookingList from './Component/UseCases/BookingList';
 import BikeDoc from './Component/BikeDoc';
+import HomeviewServiceCenter from './Component/UseCases/HomeviewServiceCenter';
+import CustomerRegistrationcopy from './Component/Registration/CustomerRegistrationcopy';
+import GetTransaction from './Component/HomePage/GetTransaction'
 
 
 
@@ -62,7 +65,7 @@ function App() {
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/viewServiceCenter">
+                  <a className="nav-link" href="/homeviewservicecenter">
                     Service Centers
                   </a>
                 </li>
@@ -77,7 +80,7 @@ function App() {
                   </a>
                   <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <li>
-                      <a className="dropdown-item" href="/customerregistration">
+                      <a className="dropdown-item" href="/customerregistrationcopy">
                         User
                       </a>
                     </li>
@@ -105,6 +108,7 @@ function App() {
                 path="customerregistration"
                 element={<CustomerRegistration/>}
               ></Route>
+              <Route path="customerregistrationcopy" element={<CustomerRegistrationcopy/>}></Route>
               <Route
                 path="servicecenterregistration"
                 element={<ServiceRegistration/>}
@@ -113,6 +117,7 @@ function App() {
                 element={<LoginNewPage/>}></Route>
                 <Route path="userlogin"
                 element={<LoginNewPage/>}></Route>
+                <Route path="homeviewservicecenter" element={<HomeviewServiceCenter/>}></Route>
                 {/* _____________________Customer Nav Bar Link_______________ */}
               <Route path="customerhome" element={<CustomerHome/>}>
                     <Route path="serviceprogress" element={<ServiceProgress/>}></Route>
@@ -120,10 +125,10 @@ function App() {
                     <Route path="viewServiceCenter" element={<ViewServiceCenter/>}></Route>
                     <Route path="bookingservice" element={<BookingService/>}></Route>
                     <Route path="payment" element={<Payment/>}></Route>
-                    <Route path="invoice" element={<Invoice/>}></Route>
                      <Route path="rating" element={<Rating/>}></Route>
                      
               </Route>
+              <Route path="invoice" element={<Invoice/>}></Route>
               <Route path="/logout" element={<Logout/>}></Route>
         
              
@@ -136,10 +141,8 @@ function App() {
             
              
              <Route path="bookinglist" element={<BookingList />}></Route>
-                <Route path="admin_Home" element={<AdminHome/>}></Route>
-                <Route path="/Verifycenters" element={<AdminServiceCenterVerification/>}></Route>
-                <Route path="allLogin" element={<LoginListWithDelete/>}></Route>
-                <Route path="allbooking" element={<ViewBookings/>}></Route>
+                
+               
                 
                 <Route path="Home" element={<Home/>}></Route>
                 <Route path="contacts" element={<ContactUs/>}></Route>
@@ -147,6 +150,14 @@ function App() {
                 
                
                 <Route path="/" element={<Home/>}></Route> 
+                {/* _____________________Admin__________________________ */}
+
+                <Route path="/admin_Home" element={<AdminHome/>}></Route>
+                <Route path="/Verifycenters" element={<AdminServiceCenterVerification/>}></Route>
+                <Route path="/allLogin" element={<LoginListWithDelete/>}></Route>
+                <Route path="/allbooking" element={<ViewBookings/>}></Route>
+               
+                <Route path="/viewTransactions" element={<GetTransaction/>}></Route>
                
                 </  Routes>
                 

@@ -3,6 +3,7 @@ package com.example.demo.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -79,10 +80,34 @@ public class ServiceCenterController {
 	public ServiceCentre createServiceCenter(@RequestBody ServiceCentre serviceCenter) {
 		return sercenser.createServiceCenter(serviceCenter);
 	}
+//	@PutMapping("/admin/servicecen/{id}")
+//	public ServiceCentre updateServiceCenter(@PathVariable int id, @RequestBody ServiceCentre serviceCenter) {
+//		return sercenser.updateServiceCenter(id, serviceCenter);
+//	}
+	
 	@PutMapping("/admin/servicecen/{id}")
-	public ServiceCentre updateServiceCenter(@PathVariable int id, @RequestBody ServiceCentre serviceCenter) {
-		return sercenser.updateServiceCenter(id, serviceCenter);
+	public ResponseEntity<ServiceCentre> updateServiceCenterVerification(@PathVariable int id) {
+	    ServiceCentre serviceCenter = sercenser.getServiceCenterById(id);
+	    if (serviceCenter != null) {
+	        serviceCenter.setStatus(1); // Change status to 1 (verified)
+	        sercenser.updateServiceCenter(id, serviceCenter);
+	        return ResponseEntity.ok(serviceCenter);
+	    } else {
+	        return ResponseEntity.notFound().build();
+	    }
 	}
+
+
+	@PutMapping("/admin/servicecen/reject/{id}")
+    public ResponseEntity<String> rejectServiceCenter(@PathVariable int id) {
+        ServiceCentre serviceCenter = sercenser.getServiceCenterById(id);
+        if (serviceCenter != null) {
+            serviceCenter.setStatus(2); // Update status to "Rejected"
+            sercenser.updateServiceCenter(id, serviceCenter);
+            return ResponseEntity.ok("Service Center rejected successfully.");
+        }
+        return ResponseEntity.notFound().build();
+    }
 
 	@DeleteMapping("/admin/servicecen/{id}")
 	public void deleteServiceCenter(@PathVariable int id) {

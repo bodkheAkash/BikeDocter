@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -107,6 +108,25 @@ public class BookingsController {
 	    booking.setExtra_price(extraprice);
 	    return bookser.save(booking);
 	}
+	   @PutMapping("/admin/bookings/{id}")
+	    public Bookings updateBooking(@PathVariable int id, @RequestBody Bookings booking) {
+	        return bookser.updateBooking(id, booking);
+	    }
 
+	    @DeleteMapping("/admin/bookings/{id}")
+	    public void deleteBooking(@PathVariable int id) {
+	    	bookser.deleteBooking(id);
+	    }
+	    
+
+	    @GetMapping("/admin/bookings")
+	    public List<Bookings> getAllBookings1() {
+	        return bookser.getAllBookings();
+	    }
+	    
+	    @PostMapping("/admin/bookings")
+	    public Bookings createBooking(@RequestBody Bookings booking) {
+	        return bookser.createBooking(booking);
+	    }
 
 }

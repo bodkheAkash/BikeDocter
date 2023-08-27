@@ -22,13 +22,13 @@ export default function ChangePassword() {
   const [msg, setmsg] = useState("");
   const navigate = useNavigate();
   const reduxAction = useDispatch();
+  const [errorMsg, setErrorMsg] = useState(""); 
 
   const sendData = (e) => {
     e.preventDefault();
     const reqOptions = {
       method: "POST",
       headers: { "content-type": "application/json" },
-      //body: JSON.stringify(info),
     };
     fetch(
       "http://localhost:8080/changePwd?username=" +
@@ -39,19 +39,15 @@ export default function ChangePassword() {
     )
       .then(function (response) {
         if (response.status === 200) {
-          // server returned 1
-          alert("Password changed Successfully. Try Login...");
           navigate("/userlogin");
         } else {
-          // server did not return 1
-          alert("Wrong credentials");
+          setErrorMsg("Error: Unable to change password. Please try again."); // Update error message state
         }
       })
       .catch(function (error) {
-        // handle error
-        alert("Server error try later...");
+        setErrorMsg("Error: Server error. Please try again later."); // Update error message state
       });
-  };
+  }
 
   return (
     <div className=" back app">
@@ -132,6 +128,7 @@ export default function ChangePassword() {
           <div className="col"></div>
         </div>
       </form>
+      {errorMsg && <p className="text-danger">{errorMsg}</p>}
     </div>
   );
 }

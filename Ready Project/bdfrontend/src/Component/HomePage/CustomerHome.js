@@ -5,6 +5,8 @@ import { Link, Navigate, Outlet } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import DateTime from "../../DateTime";
 import HomenavBar from "./HomeNavBar";
+import React from "react";
+import './Home.css'; 
 
 export default function CustomerHome() {
   const[user,setUser] =useState(null);

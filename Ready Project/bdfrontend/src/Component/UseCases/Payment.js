@@ -23,11 +23,13 @@ export default function Payment() {
 
     const [info, dispatch] = useReducer(reducer, init);
     const [allModes, setAllModes] = useState([]);
-    const [allbookingdetails, setAllbookingdetails] = useState({}); // Initialize as objec
+    const [allbookingdetails, setAllbookingdetails] = useState({}); 
     const navigate = useNavigate();
+    const [errorMsg, setErrorMsg] = useState("");
 
     const bookingdetails = (id) => {
         console.log(id);
+        localStorage.setItem("bookingid", id);
         fetch("http://localhost:8080/getByBookingId?id=" + id)
             .then((resp) => resp.json())
             .then((b) => setAllbookingdetails(b)); // Set as object
@@ -47,20 +49,17 @@ export default function Payment() {
         };
         fetch("http://localhost:8080/saveTransaction", reqOptions)
           .then((resp) => {
-            resp.json();
-            console.log(resp.status);
             if (resp.status === 200) {
-              alert("Payment Successful...!");
-              navigate("/invoice")
-              
+              navigate("/invoice");
             } else {
-              alert("Registration Failed.");
+              setErrorMsg("Error: Payment failed. Please try again."); 
               window.location.reload();
             }
+            return resp.json(); 
           })
           .catch((e) => {
+            setErrorMsg("Error: Server error. Please try again later."); 
             console.log(e);
-            alert("Registration Failed.");
             window.location.reload();
           });
       };
@@ -176,7 +175,8 @@ export default function Payment() {
                     Pay Now
                   </button>
                 </form>
-                <p>{JSON.stringify(info)}</p>
+                {/* <p>{JSON.stringify(info)}</p> */}
+                {errorMsg && <p className="text-danger">{errorMsg}</p>}
             </div>
         </div>
     );

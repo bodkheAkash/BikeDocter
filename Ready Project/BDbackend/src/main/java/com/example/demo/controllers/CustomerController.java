@@ -38,6 +38,7 @@ public class CustomerController {
 	@Autowired
 	SecurityQuestionService sqser;
 	
+
 	@Autowired
 	SaltValue saltValue;
 	
@@ -52,7 +53,7 @@ public class CustomerController {
 	{
 		System.out.println("Customer Registration");
 		Role role=roleser.getRole(1);
-		SecurityQuestion sq=sqser.getRole((int)custreg.getQuestionid());
+		SecurityQuestion sq=sqser.getRole(custreg.getQuestionid());
 		
 		System.out.println(saltValue.getSalt());
 		String encrypted=PassBasedEnc.generateSecurePassword(custreg.getPassword(),saltValue.getSalt());
@@ -65,8 +66,9 @@ public class CustomerController {
 		Customer customer=new Customer(custreg.getFname(),custreg.getLname(),custreg.getContactno(),custreg.getEmailid(),area,saved);
 		
 		return custserv.save(customer);
-		
-		
-		
 	}
+		
+		
+		
+	
 }

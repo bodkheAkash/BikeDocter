@@ -4,6 +4,9 @@ import { NavDropdown } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import DateTime from "../../DateTime";
+import './Home.css'; 
+
+
 export default function HomenavBar() 
 {   return(
     <div>

@@ -61,4 +61,9 @@ public class ServiceCenterService {
  	}
  	return servicecentre;
  }
+ 
+ public ServiceCentre getServiceCenterById(int id) {
+     return sercenrepo.findById(id).orElse(null);
+ }
+
 }

@@ -25,4 +25,8 @@ public class TransactionsService {
 		return tranrepo.save(tarns);
 	}
 	
+	public Transactions getInvoice(int cid,int bid)
+	{
+		return tranrepo.getInvoice(cid, bid);
+	}
 }
